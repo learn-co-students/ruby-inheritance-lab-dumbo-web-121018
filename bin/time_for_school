@@ -8,13 +8,33 @@ steve = Student.new
 steve.first_name = "Steve"
 steve.last_name = "Jobs"
 
+mark = Student.new("Mark", "Zuckerberg")
+
 avi = Teacher.new
 avi.first_name = "Avi"
 avi.last_name = "Flombaum"
 
+jim = User.new("James", "Gosling")
+# jim.learn(avi.teach)
+# We cannot call #learn on jim because he isnt a student
 
-some_knowledge = avi.teach 
+some_knowledge = avi.teach
 
 steve.learn(some_knowledge)
+steve.learn(avi.teach)
+steve.learn(avi.teach)
+mark.learn(avi.teach)
+mark.learn(avi.teach)
+mark.learn(avi.teach)
 
 puts "Steve just learned this important knowledge: '#{steve.knowledge.first}' from Avi"
+
+def students_knowledge(student)
+  puts ""
+  puts "Hi I'm #{student.first_name} #{student.last_name} and here's what I know:"
+  student.knowledge.each {|fact| puts fact}
+  puts ""
+end
+
+students_knowledge(steve)
+students_knowledge(mark)
